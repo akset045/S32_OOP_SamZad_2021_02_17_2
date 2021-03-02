@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace SamZad_21_02_17_2
 {
@@ -29,7 +30,7 @@ namespace SamZad_21_02_17_2
             Size = new System.Drawing.Size(60, 60),
             AutoSize = true,
             Font = new Font("Arial", 14, FontStyle.Bold),
-            Text = "Последовательность: "
+            Text = ""
         };
 
         TextBox tex1 = new TextBox
@@ -61,22 +62,31 @@ namespace SamZad_21_02_17_2
             Controls.Add(tex1);
             Controls.Add(br1);
 
-
             tex1.KeyPress += (s, a) =>
             {
 
-                char number = a.KeyChar;
+                /* char number = a.KeyChar;
 
-                if (!Char.IsDigit(number))
+                 if (!Char.IsDigit(number))*/
+
+                if (!char.IsDigit((char)(a.KeyChar)) && a.KeyChar != ((char)(Keys.Enter)) && (a.KeyChar != (char)(Keys.Delete) && (a.KeyChar != Char.Parse("-")
+                && a.KeyChar != (char)(Keys.Back))))
                 {
                     a.Handled = true;
-                } 
+                }
+                else
+                {
+                    a.Handled = false;
+                }
             };
 
             tex1.TextChanged += (s, a) =>
             {
+                if (tex1.Text.Length == 0 || tex1.Text == "-")
+                    lab2.Text = "";
+                else
 
-                lab2.Text = "Последовательность: " + ((Double.Parse(tex1.Text)) - 1) + " ; " + tex1.Text + " ; " + ((Double.Parse(tex1.Text)) + 1);
+                    lab2.Text = "Последовательность: " + ((Double.Parse(tex1.Text)) - 1) + " ; " + tex1.Text + " ; " + ((Double.Parse(tex1.Text)) + 1);
 
             };
 
