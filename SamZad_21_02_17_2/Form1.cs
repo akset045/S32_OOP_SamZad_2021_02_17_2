@@ -42,15 +42,6 @@ namespace SamZad_21_02_17_2
             Font = new Font("Arial", 14, FontStyle.Bold),
         };
 
-        Button br1 = new Button
-        {
-            Location = new Point(250, 250),
-            Size = new System.Drawing.Size(60, 60),
-            AutoSize = true,
-            Font = new Font("Arial", 14, FontStyle.Bold),
-            Text = "Обновить"
-        };
-
         public Form1()
         {
             InitializeComponent();
@@ -61,7 +52,6 @@ namespace SamZad_21_02_17_2
             Controls.Add(lab1);
             Controls.Add(lab2);
             Controls.Add(tex1);
-            Controls.Add(br1);
 
             tex1.KeyPress += (s, a) =>
             {
@@ -92,12 +82,6 @@ namespace SamZad_21_02_17_2
                     lab2.Text = "Последовательность: " + ((Double.Parse(tex1.Text)) - 1) + " ; " + tex1.Text + " ; " + ((Double.Parse(tex1.Text)) + 1);
                 }
             };
-
-            br1.Click += (s, a) =>
-            {
-                this.Update();
-            };
-
         }
 
     }
