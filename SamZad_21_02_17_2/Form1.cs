@@ -65,10 +65,6 @@ namespace SamZad_21_02_17_2
             tex1.KeyPress += (s, a) =>
             {
 
-                /* char number = a.KeyChar;
-
-                 if (!Char.IsDigit(number))*/
-
                 if (!char.IsDigit((char)(a.KeyChar)) && a.KeyChar != ((char)(Keys.Enter)) && (a.KeyChar != (char)(Keys.Delete) && (a.KeyChar != Char.Parse("-")
                 && a.KeyChar != (char)(Keys.Back))))
                 {
@@ -83,11 +79,13 @@ namespace SamZad_21_02_17_2
             tex1.TextChanged += (s, a) =>
             {
                 if (tex1.Text.Length == 0 || tex1.Text == "-")
+                {
                     lab2.Text = "";
+                }
                 else
-
+                {
                     lab2.Text = "Последовательность: " + ((Double.Parse(tex1.Text)) - 1) + " ; " + tex1.Text + " ; " + ((Double.Parse(tex1.Text)) + 1);
-
+                }
             };
 
             br1.Click += (s, a) =>
