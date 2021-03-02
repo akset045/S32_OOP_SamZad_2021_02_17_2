@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace SamZad_21_02_17_2
 {
@@ -78,7 +79,11 @@ namespace SamZad_21_02_17_2
 
             tex1.TextChanged += (s, a) =>
             {
-                if (tex1.Text.Length == 0 || tex1.Text == "-")
+                Regex rx = new Regex(@".-");
+                MatchCollection matches = rx.Matches(tex1.Text);
+                if (tex1.Text.Length == 0 || tex1.Text == "-" || tex1.Text == "." || matches.Count > 0
+
+                )
                 {
                     lab2.Text = "";
                 }
