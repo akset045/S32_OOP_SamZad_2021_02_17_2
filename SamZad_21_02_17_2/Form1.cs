@@ -37,7 +37,7 @@ namespace SamZad_21_02_17_2
         TextBox tex1 = new TextBox
         {
             Location = new Point(190, 50),
-            Size = new System.Drawing.Size(60, 60),
+            Size = new System.Drawing.Size(300, 60),
             AutoSize = true,
             Font = new Font("Arial", 14, FontStyle.Bold),
         };
@@ -70,8 +70,12 @@ namespace SamZad_21_02_17_2
             tex1.TextChanged += (s, a) =>
             {
                 Regex rx = new Regex(@".-");
-                MatchCollection matches = rx.Matches(tex1.Text);
-                if (tex1.Text.Length == 0 || tex1.Text == "-" || tex1.Text == "." || matches.Count > 0
+                MatchCollection m1 = rx.Matches(tex1.Text);
+
+                Regex rz = new Regex(@"\w*\.\w*\.\w*");
+                MatchCollection m2 = rz.Matches(tex1.Text);
+
+                if (tex1.Text.Length == 0 || tex1.Text == "-" || tex1.Text == "." || m1.Count > 0 || m2.Count > 0
 
                 )
                 {
